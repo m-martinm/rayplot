@@ -2,6 +2,7 @@
 #include "math.h"
 #define RL_PLOT_IMPLEMENTATION
 #include "rplot.h"
+#include "RayPlot_CustomFont.h"
 #define SIZE 100
 
 int main(void)
@@ -11,11 +12,12 @@ int main(void)
     SetConfigFlags(FLAG_MSAA_4X_HINT);
     InitWindow(windowWidth, windowHeight, "LinePlot2D example");
     SetTargetFPS(30);
+    Font customFont = LoadFont_RayPlot();
 
     Rectangle rect1 = (Rectangle)(Rectangle){.x = 0, .y = 0, .width = windowWidth / 2.0 - RP_EPS, .height = windowHeight};
     Rectangle rect2 = (Rectangle)(Rectangle){.x = windowWidth / 2.0 + RP_EPS, .y = 0, .width = windowWidth / 2.0 - RP_EPS, .height = windowHeight};
-    Figure2D *fig1 = LoadFigure2D(rect1, "LinePlot2DEx example");
-    Figure2D *fig2 = LoadFigure2D(rect2, "LinePlot2D example");
+    Figure2D *fig1 = LoadFigure2D(rect1, "LinePlot2DEx example", customFont);
+    Figure2D *fig2 = LoadFigure2D(rect2, "LinePlot2D example", customFont);
     float dataX[SIZE];
     float dataY[SIZE];
     for (int i = 0; i < SIZE; i++)

@@ -1,33 +1,32 @@
 #include "raylib.h"
-#include "math.h"
 #define RL_PLOT_IMPLEMENTATION
-#include "rplot.h"
 #include "RayPlot_CustomFont.h"
+#include "rplot.h"
 #define SIZE 100
 
-int main(void)
-{
+int main(void) {
     const int windowWidth = 800;
-    const int windowHeight = 500;
+    const int windowHeight = 800;
     SetConfigFlags(FLAG_MSAA_4X_HINT);
     InitWindow(windowWidth, windowHeight, "Testing");
     SetTargetFPS(30);
+    Texture tex = LoadTexture("./assets/tex.png");
+    Rectangle dest =
+        (Rectangle){.x = 0, .y = 0, .width = tex.width, .height = tex.height};
 
-    Font customfont = LoadFont_RayPlot();
-
-    while (!WindowShouldClose())
-    {
+    while (!WindowShouldClose()) {
         BeginDrawing();
         ClearBackground(RAYWHITE);
-
-        DrawTextEx(customfont, "This is customfont with and fontsize 14", (Vector2){50, 200}, 14.0, 0.0, BLACK);
-        DrawTextEx(customfont, "This is customfont with and fontsize 16", (Vector2){50, 300}, 16.0, 0.0, BLACK);
-        DrawTextEx(customfont, "This is customfont with and fontsize 24", (Vector2){50, 400}, 24.0, 0.0, BLACK);
-        DrawTextEx(customfont, "This is customfont with and fontsize 32", (Vector2){50, 100}, 32.0, 0, BLACK);
+        DrawTexturePro(
+            tex,
+            (Rectangle){
+                .x = 0, .y = 0, .width = tex.width, .height = tex.height},
+            dest, (Vector2){.x = 0, .y = 0}, 0.0f, WHITE);
+        DrawRectangleLinesEx(dest, 2.0f, ORANGE);
         EndDrawing();
     }
 
     CloseWindow();
-
+    UnloadTexture(tex);
     return 0;
 }

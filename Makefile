@@ -25,4 +25,4 @@ clean:
 runall:
 	./build/heatmap &
 	./build/scatter &
-	./build/line &
+	./build/line 

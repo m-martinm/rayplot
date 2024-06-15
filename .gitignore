@@ -1,3 +1,4 @@
 raylib
 .vscode
 build
+.cache
