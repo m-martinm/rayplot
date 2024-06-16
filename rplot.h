@@ -3,6 +3,7 @@
 ///                 2. For the fig and put the labels, titles, ticks etc on that
 ///                    so we dont have to calulate them every frame. Simply draw the plot onto
 ///                    the texture of the fig.
+///
 /// TODO: Implement ticks and put them on the texture so that we dont have to redraw them
 /// TODO: Get rid of the defines like OFFSET and make it a setting in Figure2D
 /// TODO: Keep track of how many plots are drawn onto a figure
